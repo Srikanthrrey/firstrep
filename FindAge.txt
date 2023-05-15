@@ -1,0 +1,10 @@
+DECLARE @s as DATE = '1986-08-20', @e as DATE = GETDATE(), @t as DATE
+DECLARE @y as INT, @m as INT, @d AS INT
+SET @y		= DATEDIFF(YEAR,@s,@e)	- CASE WHEN DATEADD(YEAR,DATEDIFF(YEAR,@s,@e),@s)> @e	THEN 1 ELSE 0 END
+SET @t		= DATEADD(YEAR,@y,@s)
+SET @m		= DATEDIFF(MONTH,@t,@e)	- CASE WHEN DATEADD(MONTH,DATEDIFF(MONTH,@t,@e),@t)>@e	THEN 1 ELSE 0 END
+SET @t		= DATEADD(MONTH,@m,@t)
+SET @d		= DATEDIFF(DAY,@t,@e)	- CASE WHEN DATEADD(DAY,DATEDIFF(DAY,@t,@e),@t)> @e		THEN 1 ELSE 0 END
+SET @t		= DATEADD(DAY,@d,@t)
+
+SELECT @y as [Year(s)], @m as [Month(s)], @d as [Day(s)]
