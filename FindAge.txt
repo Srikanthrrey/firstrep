@@ -8,3 +8,4 @@ SET @d		= DATEDIFF(DAY,@t,@e)	- CASE WHEN DATEADD(DAY,DATEDIFF(DAY,@t,@e),@t)> @
 SET @t		= DATEADD(DAY,@d,@t)
 
 SELECT @y as [Year(s)], @m as [Month(s)], @d as [Day(s)]
+--THIS IS TESTING--
